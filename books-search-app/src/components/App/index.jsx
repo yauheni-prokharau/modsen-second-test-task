@@ -1,5 +1,5 @@
-import './App.css'
-import Header from './components/header/Header.jsx'
+import './styles.css'
+import Header from '../Header/index'
 
 const App = () => {
   return (  
