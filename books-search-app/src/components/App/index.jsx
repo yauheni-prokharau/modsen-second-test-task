@@ -1,12 +1,19 @@
-import './styles.css'
-import Header from '../Header/index'
+import Header from "../Header/index";
+import Main from "../Main/index";
+
+import "./styles.css";
+
+import React, { useState } from "react";
 
 const App = () => {
-  return (  
+  const [bookData, setBookData] = useState([]);
+
+  return (
     <>
-      <Header />
+      <Header bookData={bookData} setBookData={setBookData} />
+      <Main bookData={bookData} />
     </>
-  )
-}
- 
-export default App
+  );
+};
+
+export default App;

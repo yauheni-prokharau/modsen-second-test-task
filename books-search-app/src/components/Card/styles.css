@@ -1,0 +1,32 @@
+.card {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(242, 243, 244);
+  width: 200px;
+  transition: border-radius 0.4s ease;
+}
+
+.card:hover {
+  border-radius: 20px;
+  background-color: rgb(236, 222, 236);
+}
+
+.img-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-wrapper img {
+  border-radius: 10px;
+}
+
+.category {
+  text-decoration: underline;
+}
+
+.category, .author {
+  color: rgb(119, 114, 114);
+}

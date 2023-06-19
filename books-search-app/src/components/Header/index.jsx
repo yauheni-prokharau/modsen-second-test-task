@@ -1,35 +1,81 @@
-import './styles.css'
+import React, { useState } from "react";
+import axios from "axios";
 
-const Header = () => {
+import "./styles.css";
+
+const Header = ({ bookData, setBookData }) => {
+  const categories = [
+    "All",
+    "Art",
+    "Biography",
+    "Computers",
+    "History",
+    "Medical",
+    "Poerty",
+  ];
+  const sorting = ["Relevance", "Newest"];
+
+  const [search, setSearch] = useState("");
+
+  const searchForBook = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      axios
+        .get(
+          "https://www.googleapis.com/books/v1/volumes?q=" +
+            search +
+            "&key=AIzaSyDuaocJ59Hmp4qVO7W-ZvV9YfFMQHT9XBI" +
+            "&maxResults=30"
+        )
+        .then((response) => setBookData(response.data.items))
+        .catch((error) => console.log(error));
+    }
+  };
+
   return (
     <header>
       <div className="header-wrapper">
         <h1>Search for books</h1>
         <div className="form-wrapper">
           <form>
-            <input type="text" id="search" name="search" placeholder="Enter title..." />
+            <input
+              type="text"
+              id="search"
+              name="search"
+              placeholder="Enter title..."
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              onKeyPress={searchForBook}
+            />
 
-            <label for="category">Categories:</label>
+            <label htmlFor="category">Categories:</label>
             <select id="category" name="category">
-              <option value="all" selected>All</option>
-              <option value="art">Art</option>
-              <option value="biography">Biography</option>
-              <option value="computers">Computers</option>
-              <option value="history">History</option>
-              <option value="medical">Medical</option>
-              <option value="poetry">Poetry</option>
+              {categories.map((category) => (
+                <option
+                  value={category.toLowerCase()}
+                  key={category.toLowerCase()}
+                >
+                  {category}
+                </option>
+              ))}
             </select>
-            
-            <label for="sorting">Sorting by:</label>
+
+            <label htmlFor="sorting">Sorting by:</label>
             <select id="sorting" name="sorting">
-              <option value="relevance" selected>Relevance</option>
-              <option value="newest">Newest</option>
+              {sorting.map((sortItem) => (
+                <option
+                  value={sortItem.toLowerCase()}
+                  key={sortItem.toLowerCase()}
+                >
+                  {sortItem}
+                </option>
+              ))}
             </select>
           </form>
         </div>
       </div>
     </header>
-  )
-}
- 
-export default Header
+  );
+};
+
+export default Header;
