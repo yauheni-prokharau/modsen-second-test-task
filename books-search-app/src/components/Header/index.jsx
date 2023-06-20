@@ -22,10 +22,12 @@ const Header = ({ bookData, setBookData }) => {
       event.preventDefault();
       axios
         .get(
-          "https://www.googleapis.com/books/v1/volumes?q=" +
+          import.meta.env.VITE_GOOGLE_BOOKS_API_URI +
             search +
-            "&key=AIzaSyDuaocJ59Hmp4qVO7W-ZvV9YfFMQHT9XBI" +
-            "&maxResults=30"
+            "&key=" +
+            import.meta.env.VITE_API_KEY +
+            "&maxResults=" +
+            import.meta.env.VITE_MAX_RESULTS
         )
         .then((response) => setBookData(response.data.items))
         .catch((error) => console.log(error));
