@@ -2,7 +2,7 @@ import "./styles.css";
 
 const Card = ({ bookData }) => {
   return (
-    <>
+    <div className="card-wrapper">
       {bookData.map((item) => {
         let thumbnail =
           item.volumeInfo.imageLinks &&
@@ -27,7 +27,7 @@ const Card = ({ bookData }) => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 
