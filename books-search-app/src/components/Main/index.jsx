@@ -2,11 +2,11 @@ import Card from "../Card/index";
 
 import "./styles.css";
 
-const Main = ({ bookData }) => {
+const Main = ({ bookData, checkForImage }) => {
   return (
     <main>
       <div className="card-container">
-        <Card bookData={bookData} />
+        <Card bookData={bookData} checkForImage={checkForImage} />
       </div>
     </main>
   );

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import bookSvg from "../../assets/images/book.svg";
+
 import Header from "../Header/index";
 import Main from "../Main/index";
 import BookInfo from "../BookInfo/index";
@@ -10,6 +12,14 @@ import "./styles.css";
 const App = () => {
   const [bookData, setBookData] = useState([]);
   const [search, setSearch] = useState("");
+
+  const checkForImage = (image) => {
+    if (!image) {
+      return <img className="svg" src={bookSvg} alt="book" />;
+    }
+
+    return <img src={image} alt="book" />;
+  };
 
   return (
     <>
@@ -25,7 +35,7 @@ const App = () => {
                   search={search}
                   setSearch={setSearch}
                 />
-                <Main bookData={bookData} />
+                <Main bookData={bookData} checkForImage={checkForImage} />
               </>
             }
           />
@@ -37,6 +47,7 @@ const App = () => {
                 setBookData={setBookData}
                 search={search}
                 setSearch={setSearch}
+                checkForImage={checkForImage}
               />
             }
           />

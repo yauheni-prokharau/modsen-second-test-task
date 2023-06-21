@@ -4,7 +4,13 @@ import Header from "../Header/index";
 
 import "./styles.css";
 
-const BookInfo = ({ bookData, setBookData, search, setSearch }) => {
+const BookInfo = ({
+  bookData,
+  setBookData,
+  search,
+  setSearch,
+  checkForImage,
+}) => {
   const { index } = useParams();
   const bookIndex = parseInt(index);
   const currentBook = bookData[bookIndex];
@@ -31,9 +37,7 @@ const BookInfo = ({ bookData, setBookData, search, setSearch }) => {
       />
       <main>
         <div className="book-container">
-          <div className="image">
-            <img className="book-image" src={thumbnail} alt="book" />
-          </div>
+          <div className="image">{checkForImage(thumbnail)}</div>
           <div className="book-info">
             <p className="book-category">{category}</p>
             <h2 className="book-name">{name}</h2>

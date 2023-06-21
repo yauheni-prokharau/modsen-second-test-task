@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import "./styles.css";
 
-const Card = ({ bookData }) => {
+const Card = ({ bookData, checkForImage }) => {
   return (
     <div className="card-wrapper">
       {bookData.map((item) => {
@@ -21,9 +21,7 @@ const Card = ({ bookData }) => {
         return (
           <div className="card" key={id}>
             <Link className="card-link" to={`/book/${index}/${id}`}>
-              <div className="img-wrapper">
-                <img src={thumbnail} alt="book" />
-              </div>
+              <div className="img-wrapper">{checkForImage(thumbnail)}</div>
               <div className="card-description">
                 <p className="category">{category}</p>
                 <h3 className="name">{name}</h3>
