@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 
 const Card = ({ bookData, checkForImage }) => {
+  const getShortBookTitle = (title) => {
+    let words = title.split(" ");
+    if (words.length > 10) {
+      return words.slice(0, 10).join(" ") + "...";
+    }
+
+    return title;
+  };
+
   return (
     <div className="card-wrapper">
       {bookData.map((item) => {
@@ -10,7 +19,8 @@ const Card = ({ bookData, checkForImage }) => {
           item.volumeInfo.imageLinks &&
           item.volumeInfo.imageLinks.smallThumbnail;
         let category = item.volumeInfo.categories;
-        let name = item.volumeInfo.title;
+        let title = item.volumeInfo.title;
+        let name = getShortBookTitle(title);
         let author =
           item.volumeInfo.authors && item.volumeInfo.authors.length == 1
             ? item.volumeInfo.authors
