@@ -37,3 +37,8 @@
 .category, .author {
   color: rgb(119, 114, 114);
 }
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
