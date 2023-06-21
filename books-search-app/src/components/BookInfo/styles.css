@@ -1,0 +1,33 @@
+.book-container {
+  margin: 20px;
+  display: flex;
+}
+
+.image {
+  margin: 30px;
+  padding: 50px;
+  background-color: rgb(242, 243, 244);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  border-radius: 20px;
+}
+
+.book-info {
+  margin-top: 30px;
+}
+
+.book-image {
+  width: 200px;
+}
+
+.book-author {
+  text-decoration: underline;
+  color: rgb(119, 114, 114);
+}
+
+.book-description {
+  padding: 30px;
+  border: 1px solid rgb(242, 243, 244);
+}

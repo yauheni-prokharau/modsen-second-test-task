@@ -3,7 +3,7 @@ import axios from "axios";
 
 import "./styles.css";
 
-const Header = ({ bookData, setBookData }) => {
+const Header = ({ bookData, setBookData, search, setSearch }) => {
   const categories = [
     "All",
     "Art",
@@ -14,8 +14,6 @@ const Header = ({ bookData, setBookData }) => {
     "Poerty",
   ];
   const sorting = ["Relevance", "Newest"];
-
-  const [search, setSearch] = useState("");
 
   const searchForBook = (event) => {
     if (event.key === "Enter") {
