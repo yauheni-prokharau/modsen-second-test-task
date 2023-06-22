@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import Header from "../Header/index";
+import { Header } from "../../components";
 
 import "./styles.css";
 

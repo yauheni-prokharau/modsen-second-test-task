@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import bookSvg from "../../assets/images/book.svg";
-
-import Header from "../Header/index";
-import Main from "../Main/index";
-import BookInfo from "../BookInfo/index";
+import { Header, Main, BookInfo } from "../../components";
 
 import "./styles.css";
 
