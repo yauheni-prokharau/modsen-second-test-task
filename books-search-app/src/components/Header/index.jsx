@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import { categories, sorting } from "../../constants";
+import { categories, sorting, maxResults } from "../../constants";
 
 import "./styles.css";
 
@@ -16,7 +16,7 @@ const Header = ({ bookData, setBookData, search, setSearch }) => {
             "&key=" +
             import.meta.env.VITE_API_KEY +
             "&maxResults=" +
-            import.meta.env.VITE_MAX_RESULTS
+            maxResults
         )
         .then((response) => setBookData(response.data.items))
         .catch((error) => console.log(error));
