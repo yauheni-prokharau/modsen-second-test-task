@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 
 import { categories, sorting, maxResults } from "../../constants";
 
 import "./styles.css";
 
-const Header = ({ bookData, setBookData, search, setSearch }) => {
+const Header = ({ setBookData, search, setSearch }) => {
+  const handleSetSearch = (event) => setSearch(event.target.value);
+
   const searchForBook = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -35,7 +37,7 @@ const Header = ({ bookData, setBookData, search, setSearch }) => {
               name="search"
               placeholder="Enter title..."
               value={search}
-              onChange={(event) => setSearch(event.target.value)}
+              onChange={(event) => handleSetSearch(event)}
               onKeyPress={searchForBook}
             />
 
