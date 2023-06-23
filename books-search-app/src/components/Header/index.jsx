@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import { categories, sorting } from "../../constants";
+
 import "./styles.css";
 
 const Header = ({ bookData, setBookData, search, setSearch }) => {
-  const categories = [
-    "All",
-    "Art",
-    "Biography",
-    "Computers",
-    "History",
-    "Medical",
-    "Poerty",
-  ];
-  const sorting = ["Relevance", "Newest"];
-
   const searchForBook = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();

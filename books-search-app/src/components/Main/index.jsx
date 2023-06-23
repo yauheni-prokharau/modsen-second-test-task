@@ -1,4 +1,4 @@
-import { Card } from "../../components";
+import { Cards } from "../../components";
 
 import "./styles.css";
 
@@ -6,7 +6,7 @@ const Main = ({ bookData, checkForImage }) => {
   return (
     <main>
       <div className="card-container">
-        <Card bookData={bookData} checkForImage={checkForImage} />
+        <Cards bookData={bookData} checkForImage={checkForImage} />
       </div>
     </main>
   );

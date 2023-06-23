@@ -1,0 +1,6 @@
+.card-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  max-width: 1700px;
+}
