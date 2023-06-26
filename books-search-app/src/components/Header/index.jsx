@@ -8,9 +8,15 @@ import "./styles.css";
 const Header = ({ setBookData, search, setSearch }) => {
   const handleSetSearch = (event) => setSearch(event.target.value);
 
-  const searchForBook = (event) => {
+  const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
+      searchForBook();
+    }
+  };
+
+  const searchForBook = () => {
+    if (search) {
       axios
         .get(
           import.meta.env.VITE_GOOGLE_BOOKS_API_URI +
@@ -21,7 +27,7 @@ const Header = ({ setBookData, search, setSearch }) => {
             maxResults
         )
         .then((response) => setBookData(response.data.items))
-        .catch((error) => console.log(error));
+        .catch((error) => alert(error));
     }
   };
 
@@ -31,15 +37,25 @@ const Header = ({ setBookData, search, setSearch }) => {
         <h1>Search for books</h1>
         <div className="form-wrapper">
           <form>
-            <input
-              type="text"
-              id="search"
-              name="search"
-              placeholder="Enter title..."
-              value={search}
-              onChange={(event) => handleSetSearch(event)}
-              onKeyPress={searchForBook}
-            />
+            <div className="input-wrapper">
+              <input
+                type="text"
+                id="search"
+                name="search"
+                placeholder="Enter title..."
+                value={search}
+                onChange={handleSetSearch}
+                onKeyPress={handleKeyPress}
+              />
+
+              <button
+                className="search-button"
+                type="button"
+                onClick={searchForBook}
+              >
+                Search 🔎
+              </button>
+            </div>
 
             <label htmlFor="category">Categories:</label>
             <select id="category" name="category">

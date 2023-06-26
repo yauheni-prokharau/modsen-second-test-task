@@ -20,10 +20,31 @@ h1 {
   align-items: center;
 }
 
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 input {
   height: 30px;
-  display: block;
-  width: 600px;
+  flex-grow: 1;
+  margin-right: 3px;
+}
+
+.search-button {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(76, 175, 80);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.search-button:hover {
+  background-color: rgb(69, 160, 73);
 }
 
 form {
