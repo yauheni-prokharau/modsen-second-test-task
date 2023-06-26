@@ -32,7 +32,7 @@ const App = () => {
                   search={search}
                   setSearch={setSearch}
                 />
-                <Main bookData={bookData} checkForImage={checkForImage} />
+                <Main bookData={bookData} checkForImage={checkForImage} search={search} setBookData={setBookData} />
               </>
             }
           />

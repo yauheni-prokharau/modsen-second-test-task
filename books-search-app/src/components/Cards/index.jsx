@@ -1,8 +1,37 @@
+import React, { useState } from "react";
+import axios from "axios";
+
 import { Card } from "../../components";
+import { maxResults } from "../../constants";
 
 import "./styles.css";
 
-const Cards = ({ bookData, checkForImage }) => {
+const Cards = ({ bookData, checkForImage, search, setBookData }) => {
+  const [startIndex, setStartIndex] = useState(0);
+
+  const showLoadMoreButton =
+    bookData.length > 0 && bookData.length % maxResults === 0;
+
+  const handleLoadMore = () => {
+    const nextStartIndex = startIndex + maxResults;
+
+    axios
+      .get(
+        `${import.meta.env.VITE_GOOGLE_BOOKS_API_URI}${search}&key=${
+          import.meta.env.VITE_API_KEY
+        }&startIndex=${nextStartIndex}&maxResults=${maxResults}`
+      )
+      .then((response) => {
+        const newBooks = response.data.items;
+
+        setStartIndex(nextStartIndex);
+        setBookData((prevBookData) => [...prevBookData, ...newBooks]);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
   const getShortBookTitle = (title) => {
     let words = title.split(" ");
     if (words.length > 10) {
@@ -30,7 +59,7 @@ const Cards = ({ bookData, checkForImage }) => {
 
         return (
           <Card
-            key={id}
+            key={index}
             checkForImage={checkForImage}
             thumbnail={thumbnail}
             category={category}
@@ -42,6 +71,12 @@ const Cards = ({ bookData, checkForImage }) => {
           />
         );
       })}
+
+      {showLoadMoreButton && (
+        <div className="load-more">
+          <button onClick={handleLoadMore}>Load more</button>
+        </div>
+      )}
     </div>
   );
 };
