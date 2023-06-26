@@ -21,6 +21,7 @@
 
 .img-wrapper img {
   border-radius: 10px;
+  width: 100px;
 }
 
 .category {
@@ -38,4 +39,5 @@
 
 .svg {
   width: 150px;
+  height: 150px;
 }

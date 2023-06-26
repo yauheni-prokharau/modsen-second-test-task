@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import bookSvg from "../../assets/images/book.svg";
+import bookSvg from "../../assets/images/blue-book.svg";
 import { Header, Main, BookInfo } from "../../components";
 
 import "./styles.css";
@@ -32,7 +32,12 @@ const App = () => {
                   search={search}
                   setSearch={setSearch}
                 />
-                <Main bookData={bookData} checkForImage={checkForImage} search={search} setBookData={setBookData} />
+                <Main
+                  bookData={bookData}
+                  checkForImage={checkForImage}
+                  search={search}
+                  setBookData={setBookData}
+                />
               </>
             }
           />
