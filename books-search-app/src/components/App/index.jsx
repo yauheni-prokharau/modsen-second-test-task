@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import bookSvg from "../../assets/images/blue-book.svg";
@@ -12,6 +12,11 @@ const App = () => {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState(sorting[0]);
   const [searchCategory, setSearchCategory] = useState(categories[0].value);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   const checkForImage = (image) => {
     if (!image) {
@@ -38,6 +43,7 @@ const App = () => {
                   setSortBy={setSortBy}
                   searchCategory={searchCategory}
                   setSearchCategory={setSearchCategory}
+                  setIsLoading={setIsLoading}
                 />
                 <Main
                   bookData={bookData}
@@ -48,6 +54,7 @@ const App = () => {
                   setSortBy={setSortBy}
                   searchCategory={searchCategory}
                   setSearchCategory={setSearchCategory}
+                  isLoading={isLoading}
                 />
               </>
             }

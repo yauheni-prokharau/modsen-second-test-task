@@ -13,6 +13,7 @@ const Header = ({
   setSortBy,
   searchCategory,
   setSearchCategory,
+  setIsLoading,
 }) => {
   const handleSetSearchCategory = (event) => {
     setSearchCategory(event.target.value);
@@ -31,6 +32,8 @@ const Header = ({
 
   const searchForBook = () => {
     if (search) {
+      setIsLoading(true);
+
       axios
         .get(
           import.meta.env.VITE_GOOGLE_BOOKS_API_URI +
@@ -44,8 +47,14 @@ const Header = ({
             "&maxResults=" +
             maxResults
         )
-        .then((response) => setBookData(response.data.items))
-        .catch((error) => alert(error));
+        .then((response) => {
+          setBookData(response.data.items);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          alert(error);
+        });
     }
   };
 
