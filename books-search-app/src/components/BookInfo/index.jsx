@@ -17,17 +17,17 @@ const BookInfo = ({
   const bookIndex = parseInt(index);
   const currentBook = bookData[bookIndex];
 
-  let name = currentBook.volumeInfo.title;
-  let thumbnail =
+  const name = currentBook.volumeInfo.title;
+  const thumbnail =
     currentBook.volumeInfo.imageLinks &&
     currentBook.volumeInfo.imageLinks.smallThumbnail;
-  let category = currentBook.volumeInfo.categories;
-  let author =
+  const category = currentBook.volumeInfo.categories;
+  const author =
     currentBook.volumeInfo.authors && currentBook.volumeInfo.authors.length == 1
       ? currentBook.volumeInfo.authors
       : currentBook.volumeInfo.authors &&
         currentBook.volumeInfo.authors.join(", ");
-  let description = currentBook.volumeInfo.description;
+  const description = currentBook.volumeInfo.description;
 
   return (
     <>

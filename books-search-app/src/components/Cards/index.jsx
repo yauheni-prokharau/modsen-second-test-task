@@ -49,7 +49,7 @@ const Cards = ({
   };
 
   const getShortBookTitle = (title) => {
-    let words = title.split(" ");
+    const words = title.split(" ");
     if (words.length > 10) {
       return words.slice(0, 10).join(" ") + "...";
     }
@@ -60,18 +60,18 @@ const Cards = ({
   return (
     <div className="card-wrapper">
       {bookData.map((item) => {
-        let thumbnail =
+        const thumbnail =
           item.volumeInfo.imageLinks &&
           item.volumeInfo.imageLinks.smallThumbnail;
-        let category = item.volumeInfo.categories;
-        let title = item.volumeInfo.title;
-        let name = getShortBookTitle(title);
-        let author =
+        const category = item.volumeInfo.categories;
+        const title = item.volumeInfo.title;
+        const name = getShortBookTitle(title);
+        const author =
           item.volumeInfo.authors && item.volumeInfo.authors.length == 1
             ? item.volumeInfo.authors
             : item.volumeInfo.authors && item.volumeInfo.authors.join(", ");
-        let index = bookData.indexOf(item);
-        let id = item.id;
+        const index = bookData.indexOf(item);
+        const id = item.id;
 
         return (
           <Card
