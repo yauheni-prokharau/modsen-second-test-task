@@ -3,12 +3,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import bookSvg from "../../assets/images/blue-book.svg";
 import { Header, Main, BookInfo } from "../../components";
+import { sorting } from "../../constants";
 
 import "./styles.css";
 
 const App = () => {
   const [bookData, setBookData] = useState([]);
   const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState(sorting[0]);
 
   const checkForImage = (image) => {
     if (!image) {
@@ -31,12 +33,16 @@ const App = () => {
                   setBookData={setBookData}
                   search={search}
                   setSearch={setSearch}
+                  sortBy={sortBy}
+                  setSortBy={setSortBy}
                 />
                 <Main
                   bookData={bookData}
                   checkForImage={checkForImage}
                   search={search}
                   setBookData={setBookData}
+                  sortBy={sortBy}
+                  setSortBy={setSortBy}
                 />
               </>
             }

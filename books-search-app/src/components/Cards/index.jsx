@@ -6,7 +6,7 @@ import { maxResults } from "../../constants";
 
 import "./styles.css";
 
-const Cards = ({ bookData, checkForImage, search, setBookData }) => {
+const Cards = ({ bookData, checkForImage, search, setBookData, sortBy }) => {
   const [startIndex, setStartIndex] = useState(0);
 
   const showLoadMoreButton =
@@ -17,9 +17,16 @@ const Cards = ({ bookData, checkForImage, search, setBookData }) => {
 
     axios
       .get(
-        `${import.meta.env.VITE_GOOGLE_BOOKS_API_URI}${search}&key=${
-          import.meta.env.VITE_API_KEY
-        }&startIndex=${nextStartIndex}&maxResults=${maxResults}`
+        import.meta.env.VITE_GOOGLE_BOOKS_API_URI +
+          search +
+          "&orderBy=" +
+          sortBy +
+          "&key=" +
+          import.meta.env.VITE_API_KEY +
+          "&startIndex=" +
+          nextStartIndex +
+          "&maxResults=" +
+          maxResults
       )
       .then((response) => {
         const newBooks = response.data.items;

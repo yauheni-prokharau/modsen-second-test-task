@@ -5,7 +5,9 @@ import { categories, sorting, maxResults } from "../../constants";
 
 import "./styles.css";
 
-const Header = ({ setBookData, search, setSearch }) => {
+const Header = ({ setBookData, search, setSearch, sortBy, setSortBy }) => {
+  const handleSetSortBy = (event) => setSortBy(event.target.value);
+
   const handleSetSearch = (event) => setSearch(event.target.value);
 
   const handleKeyPress = (event) => {
@@ -21,6 +23,8 @@ const Header = ({ setBookData, search, setSearch }) => {
         .get(
           import.meta.env.VITE_GOOGLE_BOOKS_API_URI +
             search +
+            "&orderBy=" +
+            sortBy +
             "&key=" +
             import.meta.env.VITE_API_KEY +
             "&maxResults=" +
@@ -70,7 +74,12 @@ const Header = ({ setBookData, search, setSearch }) => {
             </select>
 
             <label htmlFor="sorting">Sorting by:</label>
-            <select id="sorting" name="sorting">
+            <select
+              id="sorting"
+              name="sorting"
+              value={sortBy}
+              onChange={handleSetSortBy}
+            >
               {sorting.map((sortItem) => (
                 <option
                   value={sortItem.toLowerCase()}

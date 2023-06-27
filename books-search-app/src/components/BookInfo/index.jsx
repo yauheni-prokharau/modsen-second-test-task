@@ -10,6 +10,8 @@ const BookInfo = ({
   search,
   setSearch,
   checkForImage,
+  sortBy,
+  setSortBy,
 }) => {
   const { index } = useParams();
   const bookIndex = parseInt(index);
@@ -34,6 +36,8 @@ const BookInfo = ({
         setBookData={setBookData}
         search={search}
         setSearch={setSearch}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
       />
       <main>
         <div className="book-container">
