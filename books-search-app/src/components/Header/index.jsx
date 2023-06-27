@@ -5,7 +5,19 @@ import { categories, sorting, maxResults } from "../../constants";
 
 import "./styles.css";
 
-const Header = ({ setBookData, search, setSearch, sortBy, setSortBy }) => {
+const Header = ({
+  setBookData,
+  search,
+  setSearch,
+  sortBy,
+  setSortBy,
+  searchCategory,
+  setSearchCategory,
+}) => {
+  const handleSetSearchCategory = (event) => {
+    setSearchCategory(event.target.value);
+  };
+
   const handleSetSortBy = (event) => setSortBy(event.target.value);
 
   const handleSetSearch = (event) => setSearch(event.target.value);
@@ -23,6 +35,8 @@ const Header = ({ setBookData, search, setSearch, sortBy, setSortBy }) => {
         .get(
           import.meta.env.VITE_GOOGLE_BOOKS_API_URI +
             search +
+            "+subject:" +
+            searchCategory +
             "&orderBy=" +
             sortBy +
             "&key=" +
@@ -62,13 +76,15 @@ const Header = ({ setBookData, search, setSearch, sortBy, setSortBy }) => {
             </div>
 
             <label htmlFor="category">Categories:</label>
-            <select id="category" name="category">
+            <select
+              id="category"
+              name="category"
+              value={searchCategory}
+              onChange={handleSetSearchCategory}
+            >
               {categories.map((category) => (
-                <option
-                  value={category.toLowerCase()}
-                  key={category.toLowerCase()}
-                >
-                  {category}
+                <option value={category.value} key={category.value}>
+                  {category.categoryName}
                 </option>
               ))}
             </select>

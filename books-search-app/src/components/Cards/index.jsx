@@ -6,7 +6,14 @@ import { maxResults } from "../../constants";
 
 import "./styles.css";
 
-const Cards = ({ bookData, checkForImage, search, setBookData, sortBy }) => {
+const Cards = ({
+  bookData,
+  checkForImage,
+  search,
+  setBookData,
+  sortBy,
+  searchCategory,
+}) => {
   const [startIndex, setStartIndex] = useState(0);
 
   const showLoadMoreButton =
@@ -19,6 +26,8 @@ const Cards = ({ bookData, checkForImage, search, setBookData, sortBy }) => {
       .get(
         import.meta.env.VITE_GOOGLE_BOOKS_API_URI +
           search +
+          "+subject:" +
+          searchCategory +
           "&orderBy=" +
           sortBy +
           "&key=" +

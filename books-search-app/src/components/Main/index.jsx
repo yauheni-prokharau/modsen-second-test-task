@@ -2,7 +2,15 @@ import { Cards } from "../../components";
 
 import "./styles.css";
 
-const Main = ({ bookData, checkForImage, search, setBookData, sortBy }) => {
+const Main = ({
+  bookData,
+  checkForImage,
+  search,
+  setBookData,
+  sortBy,
+  searchCategory,
+  setSearchCategory,
+}) => {
   return (
     <main>
       <div className="card-container">
@@ -12,6 +20,8 @@ const Main = ({ bookData, checkForImage, search, setBookData, sortBy }) => {
           search={search}
           setBookData={setBookData}
           sortBy={sortBy}
+          searchCategory={searchCategory}
+          setSearchCategory={setSearchCategory}
         />
       </div>
     </main>
