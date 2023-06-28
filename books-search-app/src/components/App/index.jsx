@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { Header, Main, BookInfo } from "../../components";
 import { AppProvider } from "../../context";
+import { home, bookInfo } from "../../constants";
+import { Home, BookInfo } from "../../pages";
 
 import "./styles.css";
 
@@ -11,16 +12,8 @@ const App = () => {
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Header />
-                <Main />
-              </>
-            }
-          />
-          <Route path="/book/:index/:id" element={<BookInfo />} />
+          <Route path={home} element={<Home />} />
+          <Route path={bookInfo} element={<BookInfo />} />
         </Routes>
       </BrowserRouter>
     </AppProvider>

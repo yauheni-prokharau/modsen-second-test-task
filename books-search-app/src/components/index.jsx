@@ -1,5 +1,5 @@
 export { default as App } from "./App";
-export { default as BookInfo } from "./BookInfo";
+export { default as BookDescription } from "./BookDescription";
 export { default as Cards } from "./Cards";
 export { default as Card } from "./Card";
 export { default as Header } from "./Header";
