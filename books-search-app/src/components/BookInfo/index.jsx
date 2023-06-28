@@ -41,7 +41,7 @@ const BookInfo = ({
       />
       <main>
         <div className="book-container">
-          <div className="image">{checkForImage(thumbnail)}</div>
+          <div className="book-image">{checkForImage(thumbnail)}</div>
           <div className="book-info">
             <p className="book-category">{category}</p>
             <h2 className="book-name">{name}</h2>

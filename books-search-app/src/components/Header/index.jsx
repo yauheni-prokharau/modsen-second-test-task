@@ -84,36 +84,38 @@ const Header = ({
               </button>
             </div>
 
-            <label htmlFor="category">Categories:</label>
-            <select
-              id="category"
-              name="category"
-              value={searchCategory}
-              onChange={handleSetSearchCategory}
-            >
-              {categories.map((category) => (
-                <option value={category.value} key={category.value}>
-                  {category.categoryName}
-                </option>
-              ))}
-            </select>
+            <div className="sorting-wrapper">
+              <label htmlFor="category">Categories:</label>
+              <select
+                id="category"
+                name="category"
+                value={searchCategory}
+                onChange={handleSetSearchCategory}
+              >
+                {categories.map((category) => (
+                  <option value={category.value} key={category.value}>
+                    {category.categoryName}
+                  </option>
+                ))}
+              </select>
 
-            <label htmlFor="sorting">Sorting by:</label>
-            <select
-              id="sorting"
-              name="sorting"
-              value={sortBy}
-              onChange={handleSetSortBy}
-            >
-              {sorting.map((sortItem) => (
-                <option
-                  value={sortItem.toLowerCase()}
-                  key={sortItem.toLowerCase()}
-                >
-                  {sortItem}
-                </option>
-              ))}
-            </select>
+              <label htmlFor="sorting">Sorting by:</label>
+              <select
+                id="sorting"
+                name="sorting"
+                value={sortBy}
+                onChange={handleSetSortBy}
+              >
+                {sorting.map((sortItem) => (
+                  <option
+                    value={sortItem.toLowerCase()}
+                    key={sortItem.toLowerCase()}
+                  >
+                    {sortItem}
+                  </option>
+                ))}
+              </select>
+            </div>
           </form>
         </div>
       </div>

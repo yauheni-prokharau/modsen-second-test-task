@@ -1,9 +1,15 @@
+main {
+  display: flex;
+  justify-content: center;
+}
+
 .book-container {
   margin: 20px;
   display: flex;
+  max-width: 1700px;
 }
 
-.image {
+.book-image {
   margin: 30px;
   padding: 50px;
   background-color: rgb(242, 243, 244);
@@ -18,10 +24,6 @@
   margin-top: 30px;
 }
 
-.book-image {
-  width: 100px;
-}
-
 .book-author {
   text-decoration: underline;
   color: rgb(119, 114, 114);
@@ -30,4 +32,24 @@
 .book-description {
   padding: 30px;
   border: 1px solid rgb(242, 243, 244);
+}
+
+@media (max-width: 1200px) {
+  .book-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-image {
+    width: auto;
+    margin-bottom: 30px;
+  }
+
+  .book-info {
+    margin-top: 0;
+  }
+
+  .book-description {
+    text-align: justify;
+  }
 }
