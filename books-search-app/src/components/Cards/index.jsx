@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 
 import { Card, ButtonLoader } from "../../components";
 import { maxResults } from "../../constants";
+import { AppContext } from "../../context";
 
 import "./styles.css";
 
-const Cards = ({
-  bookData,
-  checkForImage,
-  search,
-  setBookData,
-  sortBy,
-  searchCategory,
-}) => {
+const Cards = () => {
+  const { bookData, search, setBookData, sortBy, searchCategory } =
+    useContext(AppContext);
+
   const [startIndex, setStartIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -81,7 +78,6 @@ const Cards = ({
         return (
           <Card
             key={index}
-            checkForImage={checkForImage}
             thumbnail={thumbnail}
             category={category}
             title={title}

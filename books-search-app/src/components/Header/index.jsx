@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 
 import { categories, sorting, maxResults } from "../../constants";
+import { AppContext } from "../../context";
 
 import "./styles.css";
 
-const Header = ({
-  setBookData,
-  search,
-  setSearch,
-  sortBy,
-  setSortBy,
-  searchCategory,
-  setSearchCategory,
-  setIsLoading,
-}) => {
+const Header = () => {
+  const {
+    setBookData,
+    search,
+    setSearch,
+    sortBy,
+    setSortBy,
+    searchCategory,
+    setSearchCategory,
+    setIsLoading,
+  } = useContext(AppContext);
+
   const handleSetSearchCategory = (event) => {
     setSearchCategory(event.target.value);
   };

@@ -1,32 +1,20 @@
+import { useContext } from "react";
+
 import { Cards, Loader } from "../../components";
+import { AppContext } from "../../context";
 
 import "./styles.css";
 
-const Main = ({
-  bookData,
-  checkForImage,
-  search,
-  setBookData,
-  sortBy,
-  searchCategory,
-  setSearchCategory,
-  isLoading,
-}) => {
+const Main = () => {
+  const { isLoading } = useContext(AppContext);
+
   return (
     <main>
       {isLoading ? (
         <Loader />
       ) : (
         <div className="card-container">
-          <Cards
-            bookData={bookData}
-            checkForImage={checkForImage}
-            search={search}
-            setBookData={setBookData}
-            sortBy={sortBy}
-            searchCategory={searchCategory}
-            setSearchCategory={setSearchCategory}
-          />
+          <Cards />
         </div>
       )}
     </main>

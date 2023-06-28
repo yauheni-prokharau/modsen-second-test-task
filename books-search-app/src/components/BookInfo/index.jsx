@@ -1,18 +1,22 @@
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { Header } from "../../components";
+import { AppContext } from "../../context";
 
 import "./styles.css";
 
-const BookInfo = ({
-  bookData,
-  setBookData,
-  search,
-  setSearch,
-  checkForImage,
-  sortBy,
-  setSortBy,
-}) => {
+const BookInfo = () => {
+  const {
+    bookData,
+    setBookData,
+    search,
+    setSearch,
+    checkForImage,
+    sortBy,
+    setSortBy,
+  } = useContext(AppContext);
+
   const { index } = useParams();
   const bookIndex = parseInt(index);
   const currentBook = bookData[bookIndex];
