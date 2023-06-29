@@ -27,3 +27,7 @@
 .load-more button:hover {
   background-color: rgb(118, 10, 218);
 }
+
+.found-books h2 {
+  margin: 15px;
+}

@@ -11,6 +11,7 @@ const Header = () => {
     setBookData,
     search,
     setSearch,
+    setTotalItems,
     sortBy,
     setSortBy,
     searchCategory,
@@ -52,6 +53,7 @@ const Header = () => {
         )
         .then((response) => {
           setBookData(response.data.items);
+          setTotalItems(response.data.totalItems);
           setIsLoading(false);
         })
         .catch((error) => {

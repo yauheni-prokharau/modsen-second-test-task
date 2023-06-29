@@ -8,7 +8,7 @@ import { AppContext } from "../../context";
 import "./styles.css";
 
 const Cards = () => {
-  const { bookData, search, setBookData, sortBy, searchCategory } =
+  const { bookData, search, setBookData, totalItems, sortBy, searchCategory } =
     useContext(AppContext);
 
   const [startIndex, setStartIndex] = useState(0);
@@ -60,43 +60,48 @@ const Cards = () => {
   };
 
   return (
-    <div className="card-wrapper">
-      {bookData.map((item) => {
-        const thumbnail =
-          item.volumeInfo.imageLinks &&
-          item.volumeInfo.imageLinks.smallThumbnail;
-        const category = item.volumeInfo.categories;
-        const title = item.volumeInfo.title;
-        const name = getShortBookTitle(title);
-        const author =
-          item.volumeInfo.authors && item.volumeInfo.authors.length == 1
-            ? item.volumeInfo.authors
-            : item.volumeInfo.authors && item.volumeInfo.authors.join(", ");
-        const index = bookData.indexOf(item);
-        const id = item.id;
+    <>
+      <div className="found-books">
+        {totalItems !== null && <h2>Found {totalItems} books</h2>}
+      </div>
+      <div className="card-wrapper">
+        {bookData.map((item) => {
+          const thumbnail =
+            item.volumeInfo.imageLinks &&
+            item.volumeInfo.imageLinks.smallThumbnail;
+          const category = item.volumeInfo.categories;
+          const title = item.volumeInfo.title;
+          const name = getShortBookTitle(title);
+          const author =
+            item.volumeInfo.authors && item.volumeInfo.authors.length == 1
+              ? item.volumeInfo.authors
+              : item.volumeInfo.authors && item.volumeInfo.authors.join(", ");
+          const index = bookData.indexOf(item);
+          const id = item.id;
 
-        return (
-          <Card
-            key={index}
-            thumbnail={thumbnail}
-            category={category}
-            title={title}
-            name={name}
-            author={author}
-            index={index}
-            id={id}
-          />
-        );
-      })}
+          return (
+            <Card
+              key={index}
+              thumbnail={thumbnail}
+              category={category}
+              title={title}
+              name={name}
+              author={author}
+              index={index}
+              id={id}
+            />
+          );
+        })}
 
-      {showLoadMoreButton && (
-        <div className="load-more">
-          <button onClick={handleLoadMore} disabled={isLoading}>
-            {isLoading ? <ButtonLoader /> : "Load more"}
-          </button>
-        </div>
-      )}
-    </div>
+        {showLoadMoreButton && (
+          <div className="load-more">
+            <button onClick={handleLoadMore} disabled={isLoading}>
+              {isLoading ? <ButtonLoader /> : "Load more"}
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

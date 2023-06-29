@@ -9,6 +9,7 @@ export const AppContext = createContext([]);
 export const AppProvider = ({ children }) => {
   const [bookData, setBookData] = useState([]);
   const [search, setSearch] = useState("");
+  const [totalItems, setTotalItems] = useState(null);
   const [sortBy, setSortBy] = useState(sorting[0]);
   const [searchCategory, setSearchCategory] = useState(categories[0].value);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,6 +33,8 @@ export const AppProvider = ({ children }) => {
         setBookData,
         search,
         setSearch,
+        totalItems,
+        setTotalItems,
         sortBy,
         setSortBy,
         searchCategory,
