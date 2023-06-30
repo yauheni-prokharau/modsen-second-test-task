@@ -97,9 +97,9 @@ const Header = () => {
                 value={searchCategory}
                 onChange={handleSetSearchCategory}
               >
-                {categories.map((category) => (
-                  <option value={category.value} key={category.value}>
-                    {category.categoryName}
+                {categories.map(({ value, categoryName }) => (
+                  <option value={value} key={value}>
+                    {categoryName}
                   </option>
                 ))}
               </select>

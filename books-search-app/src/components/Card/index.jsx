@@ -5,17 +5,17 @@ import { AppContext } from "../../context";
 
 import "./styles.css";
 
-const Card = (props) => {
+const Card = ({ id, index, thumbnail, category, name, author }) => {
   const { checkForImage } = useContext(AppContext);
 
   return (
-    <div className="card" key={props.id}>
-      <Link className="card-link" to={`/book/${props.index}/${props.id}`}>
-        <div className="img-wrapper">{checkForImage(props.thumbnail)}</div>
+    <div className="card" key={id}>
+      <Link className="card-link" to={`/book/${index}/${id}`}>
+        <div className="img-wrapper">{checkForImage(thumbnail)}</div>
         <div className="card-description">
-          <p className="category">{props.category}</p>
-          <h3 className="name">{props.name}</h3>
-          <p className="author">{props.author}</p>
+          <p className="category">{category}</p>
+          <h3 className="name">{name}</h3>
+          <p className="author">{author}</p>
         </div>
       </Link>
     </div>
