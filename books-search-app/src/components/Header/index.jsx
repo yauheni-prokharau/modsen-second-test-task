@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import axios from "axios";
 
-import { categories, sorting, maxResults } from "../../constants";
-import { AppContext } from "../../context";
+import { categories, sorting, maxResults } from "@constants";
+import { AppContext } from "@context";
 
 import "./styles.css";
 

@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { AppProvider } from "../../context";
-import { home, bookInfo } from "../../constants";
-import { Home, BookInfo } from "../../pages";
+import { AppProvider } from "@context";
+import { home, bookInfo } from "@constants";
+import { Home, BookInfo } from "@pages";
 
 import "./styles.css";
 

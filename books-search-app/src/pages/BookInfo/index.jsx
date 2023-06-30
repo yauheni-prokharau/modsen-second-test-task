@@ -1,4 +1,4 @@
-import { Header, BookDescription } from "../../components";
+import { Header, BookDescription } from "@components";
 
 const BookInfo = () => {
   return (

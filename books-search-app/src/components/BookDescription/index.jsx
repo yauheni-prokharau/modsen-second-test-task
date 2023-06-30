@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import { AppContext } from "../../context";
-import { home } from "../../constants";
+import { AppContext } from "@context";
+import { home } from "@constants";
 
 import "./styles.css";
 

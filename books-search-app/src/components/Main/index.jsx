@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
-import { Cards, Loader } from "../../components";
-import { AppContext } from "../../context";
+import { Cards, Loader } from "@components";
+import { AppContext } from "@context";
 
 import "./styles.css";
 

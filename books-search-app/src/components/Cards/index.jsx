@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 
-import { Card, ButtonLoader } from "../../components";
-import { maxResults } from "../../constants";
-import { AppContext } from "../../context";
+import { Card, ButtonLoader } from "@components";
+import { maxResults } from "@constants";
+import { AppContext } from "@context";
 
 import "./styles.css";
 
