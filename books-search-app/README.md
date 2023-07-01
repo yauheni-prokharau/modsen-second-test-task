@@ -2,5 +2,5 @@
 
 ## to run app use
 
-1. `nmp install`
-2. `nmp run dev`
+1. `npm install`
+2. `npm run dev`
