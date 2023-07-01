@@ -7,23 +7,13 @@ import { home } from "@constants";
 import "./styles.css";
 
 const BookDescription = () => {
-  const { bookData, checkForImage } = useContext(AppContext);
+  const { bookData, checkForImage, getBookData } = useContext(AppContext);
 
   const { index } = useParams();
   const bookIndex = parseInt(index);
-  const currentBook = bookData[bookIndex];
 
-  const name = currentBook.volumeInfo.title;
-  const thumbnail =
-    currentBook.volumeInfo.imageLinks &&
-    currentBook.volumeInfo.imageLinks.smallThumbnail;
-  const category = currentBook.volumeInfo.categories;
-  const author =
-    currentBook.volumeInfo.authors && currentBook.volumeInfo.authors.length == 1
-      ? currentBook.volumeInfo.authors
-      : currentBook.volumeInfo.authors &&
-        currentBook.volumeInfo.authors.join(", ");
-  const description = currentBook.volumeInfo.description;
+  const currentBook = getBookData(bookData)[bookIndex];
+  const { thumbnail, category, name, author, description } = currentBook;
 
   const navigate = useNavigate();
 

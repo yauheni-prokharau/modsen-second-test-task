@@ -8,8 +8,15 @@ import { AppContext } from "@context";
 import "./styles.css";
 
 const Cards = () => {
-  const { bookData, search, setBookData, totalItems, sortBy, searchCategory } =
-    useContext(AppContext);
+  const {
+    bookData,
+    search,
+    setBookData,
+    totalItems,
+    sortBy,
+    searchCategory,
+    getBookData,
+  } = useContext(AppContext);
 
   const [startIndex, setStartIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -50,14 +57,7 @@ const Cards = () => {
       });
   };
 
-  const getShortBookTitle = (title) => {
-    const words = title.split(" ");
-    if (words.length > 10) {
-      return words.slice(0, 10).join(" ") + "...";
-    }
-
-    return title;
-  };
+  const cardList = getBookData(bookData);
 
   return (
     <>
@@ -65,20 +65,8 @@ const Cards = () => {
         {totalItems !== null && <h2>Found {totalItems} books</h2>}
       </div>
       <div className="card-wrapper">
-        {bookData.map((item) => {
-          const thumbnail =
-            item.volumeInfo.imageLinks &&
-            item.volumeInfo.imageLinks.smallThumbnail;
-          const category = item.volumeInfo.categories;
-          const title = item.volumeInfo.title;
-          const name = getShortBookTitle(title);
-          const author =
-            item.volumeInfo.authors && item.volumeInfo.authors.length == 1
-              ? item.volumeInfo.authors
-              : item.volumeInfo.authors && item.volumeInfo.authors.join(", ");
-          const index = bookData.indexOf(item);
-          const id = item.id;
-
+        {cardList.map((item) => {
+          const { thumbnail, category, title, name, author, index, id } = item;
           return (
             <Card
               key={index}
@@ -92,7 +80,6 @@ const Cards = () => {
             />
           );
         })}
-
         {showLoadMoreButton && (
           <div className="load-more">
             <button onClick={handleLoadMore} disabled={isLoading}>
