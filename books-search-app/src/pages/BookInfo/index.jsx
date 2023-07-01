@@ -1,9 +1,8 @@
-import { Header, BookDescription } from "@components";
+import { BookDescription } from "@components";
 
 const BookInfo = () => {
   return (
     <>
-      <Header />
       <BookDescription />
     </>
   );

@@ -1,9 +1,8 @@
-import { Header, Main } from "@components";
+import { Main } from "@components";
 
 const Home = () => {
   return (
     <>
-      <Header />
       <Main />
     </>
   );
