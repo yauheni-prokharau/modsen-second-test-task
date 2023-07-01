@@ -1,0 +1,19 @@
+.error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgb(236, 222, 236);
+  border: 1px solid rgb(124, 57, 187);
+  border-radius: 10px;
+  width: 300px;
+  height: 300px;
+}
