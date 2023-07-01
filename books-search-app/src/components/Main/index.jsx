@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { Cards, Loader } from "@components";
+import { CardList, Loader } from "@components";
 import { AppContext } from "@context";
 
 import "./styles.css";
@@ -14,7 +14,7 @@ const Main = () => {
         <Loader />
       ) : (
         <div className="card-container">
-          <Cards />
+          <CardList />
         </div>
       )}
     </main>
