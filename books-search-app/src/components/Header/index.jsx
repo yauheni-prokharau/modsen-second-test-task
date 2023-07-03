@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import axios from "axios";
 
 import { categories, sorting, maxResults } from "@constants";
 import { AppContext } from "@context";
+import { fetchBooks } from "@api";
 
 import "./styles.css";
 
@@ -34,32 +34,25 @@ const Header = () => {
     }
   };
 
-  const searchForBook = () => {
+  const searchForBook = async () => {
     if (search) {
       setIsLoading(true);
 
-      axios
-        .get(
-          import.meta.env.VITE_GOOGLE_BOOKS_API_URI +
-            search +
-            "+subject:" +
-            searchCategory +
-            "&orderBy=" +
-            sortBy +
-            "&key=" +
-            import.meta.env.VITE_API_KEY +
-            "&maxResults=" +
-            maxResults
-        )
-        .then((response) => {
-          setBookData(response.data.items);
-          setTotalItems(response.data.totalItems);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          setIsLoading(false);
-          alert(error);
-        });
+      try {
+        const response = await fetchBooks(
+          search,
+          searchCategory,
+          sortBy,
+          maxResults
+        );
+
+        setBookData(response.items);
+        setTotalItems(response.totalItems);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        alert(error);
+      }
     }
   };
 

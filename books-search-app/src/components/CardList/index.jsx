@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import axios from "axios";
 
 import { Card, ButtonLoader } from "@components";
 import { maxResults } from "@constants";
 import { AppContext } from "@context";
+import { fetchBooks } from "@api";
 
 import "./styles.css";
 
@@ -24,37 +24,28 @@ const Cards = () => {
   const showLoadMoreButton =
     bookData.length > 0 && bookData.length % maxResults === 0;
 
-  const handleLoadMore = () => {
+  const handleLoadMore = async () => {
     const nextStartIndex = startIndex + maxResults;
 
     setIsLoading(true);
 
-    axios
-      .get(
-        import.meta.env.VITE_GOOGLE_BOOKS_API_URI +
-          search +
-          "+subject:" +
-          searchCategory +
-          "&orderBy=" +
-          sortBy +
-          "&key=" +
-          import.meta.env.VITE_API_KEY +
-          "&startIndex=" +
-          nextStartIndex +
-          "&maxResults=" +
-          maxResults
-      )
-      .then((response) => {
-        const newBooks = response.data.items;
+    try {
+      const response = await fetchBooks(
+        search,
+        searchCategory,
+        sortBy,
+        nextStartIndex
+      );
 
-        setStartIndex(nextStartIndex);
-        setBookData((prevBookData) => [...prevBookData, ...newBooks]);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        alert(error);
-        setIsLoading(false);
-      });
+      const newBooks = response.items;
+
+      setStartIndex(nextStartIndex);
+      setBookData((prevBookData) => [...prevBookData, ...newBooks]);
+      setIsLoading(false);
+    } catch (error) {
+      alert(error);
+      setIsLoading(false);
+    }
   };
 
   const cardList = getBookData(bookData);
