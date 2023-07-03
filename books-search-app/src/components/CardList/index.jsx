@@ -7,7 +7,7 @@ import { fetchBooks } from "@api";
 
 import "./styles.css";
 
-const Cards = () => {
+const CardList = () => {
   const {
     bookData,
     search,
@@ -83,4 +83,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+export default CardList;
