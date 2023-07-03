@@ -49,7 +49,7 @@ const CardList = () => {
     }
   };
 
-  const cardList = getBookData(bookData);
+  const cardList = getBookData();
 
   return (
     <>
