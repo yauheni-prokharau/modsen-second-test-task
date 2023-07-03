@@ -37,12 +37,14 @@ const Header = () => {
   const searchForBook = async () => {
     if (search) {
       setIsLoading(true);
+      const startIndex = 0;
 
       try {
         const response = await fetchBooks(
           search,
           searchCategory,
           sortBy,
+          startIndex,
           maxResults
         );
 

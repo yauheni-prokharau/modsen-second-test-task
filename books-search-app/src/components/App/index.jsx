@@ -10,8 +10,8 @@ import "./styles.css";
 
 const App = () => {
   return (
-    <AppProvider>
-      <ErrorBoundary>
+    <ErrorBoundary>
+      <AppProvider>
         <Header />
         <BrowserRouter>
           <Routes>
@@ -19,8 +19,8 @@ const App = () => {
             <Route path={bookInfo} element={<BookInfo />} />
           </Routes>
         </BrowserRouter>
-      </ErrorBoundary>
-    </AppProvider>
+      </AppProvider>
+    </ErrorBoundary>
   );
 };
 

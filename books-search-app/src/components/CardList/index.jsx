@@ -34,7 +34,8 @@ const CardList = () => {
         search,
         searchCategory,
         sortBy,
-        nextStartIndex
+        nextStartIndex,
+        maxResults
       );
 
       const newBooks = response.items;

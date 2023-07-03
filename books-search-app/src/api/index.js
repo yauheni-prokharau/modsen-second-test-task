@@ -4,6 +4,7 @@ export const fetchBooks = async (
   search,
   searchCategory,
   sortBy,
+  startIndex,
   maxResults
 ) => {
   try {
@@ -16,6 +17,8 @@ export const fetchBooks = async (
         sortBy +
         "&key=" +
         import.meta.env.VITE_API_KEY +
+        "&startIndex=" +
+        startIndex +
         "&maxResults=" +
         maxResults
     );
